@@ -17,6 +17,23 @@ public class LoginResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("password");
+		
+		if (id == null || id.isEmpty() || pw == null || pw.isEmpty()) {
+			if (id.length() == 8) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("管理者メニュー");//後で書き換え
+				dispatcher.forward(request, response);
+			}else if (id.length() == 6) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("司書メニュー");//後で書き換え
+				dispatcher.forward(request, response);
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp");
+				dispatcher.forward(request, response);
+			}
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult");
 		dispatcher.forward(request, response);
 	}

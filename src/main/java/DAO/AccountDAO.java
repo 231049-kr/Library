@@ -32,15 +32,13 @@ public class AccountDAO {
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
             pstmt.setString(3, name);
-
-            // SQL実行
             ResultSet rs = pstmt.executeQuery();
 
             // ログイン成功
             if (rs.next()) {
                 rs.getString("id");
                 rs.getString("name");
-                rs.getString("psaa");
+                rs.getString("psss");
             }
 
             // 後片付け

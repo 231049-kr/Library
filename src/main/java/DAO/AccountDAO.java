@@ -13,7 +13,7 @@ public class AccountDAO {
     private final String DB_USER = "root";
     private final String DB_PASS = "password";
 
-    public User findByLogin(String id, String pass) {
+    public User findByLogin(String id, String pass, String name) {
 
         User user = null;
 
@@ -26,11 +26,12 @@ public class AccountDAO {
                     JDBC_URL, DB_USER, DB_PASS);
 
             // SQL
-            String sql = "SELECT * FROM users WHERE id = ? AND pass = ?";
+            String sql = "SELECT * FROM users WHERE id = ? AND pass = ? AND name = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
+            pstmt.setString(3, name);
 
             // SQL実行
             ResultSet rs = pstmt.executeQuery();

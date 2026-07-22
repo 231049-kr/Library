@@ -9,21 +9,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserRegistServlet
+ * Servlet implementation class LoginResult
  */
-@WebServlet("/UserRegistServlet")
-public class UserRegistServlet extends HttpServlet {
+@WebServlet("/LoginResult")
+public class LoginResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/jsp/UserRegistration.jsp")
-		.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/LoginResult.jsp")
+	       .forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

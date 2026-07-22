@@ -24,13 +24,13 @@ public class LoginResultServlet extends HttpServlet {
 		
 		if (id == null || id.isEmpty() || pw == null || pw.isEmpty()) {
 			if (id.length() == 8) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("管理者メニュー");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu");//後で書き換え
 				dispatcher.forward(request, response);
 			}else if (id.length() == 6) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("司書メニュー");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu");//後で書き換え
 				dispatcher.forward(request, response);
 			}else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen");
 				dispatcher.forward(request, response);
 			}
 		}

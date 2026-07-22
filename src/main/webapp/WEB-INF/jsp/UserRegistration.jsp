@@ -28,16 +28,6 @@ pageEncoding="UTF-8"%>
     <input type="password" name="password">
 </p>
 
-<p>
-    電話番号：
-    <input type="text" name="phone">
-</p>
-
-<p>
-    住所：
-    <input type="text" name="address">
-</p>
-
 <input type="submit" value="登録">
 </form>
 

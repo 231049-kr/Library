@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import DAO.AccountDAO;
+import model.User;
+
 /**
  * Servlet implementation class LoginResultServlet
  */
@@ -22,7 +25,11 @@ public class LoginResultServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 		
+		AccountDAO dao = new AccountDAO();
+		User user = dao.findByLogin(id, pw);
+		
 		if (id == null || id.isEmpty() || pw == null || pw.isEmpty()) {
+			
 			if (id.length() == 8) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu");//後で書き換え
 				dispatcher.forward(request, response);

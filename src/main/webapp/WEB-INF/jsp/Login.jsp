@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
 <form action="LoginServlet" method="post">
 
     ID：
-    <input type="text" name="name">
+    <input type="text" name="id">
     <br>
 
     PW：

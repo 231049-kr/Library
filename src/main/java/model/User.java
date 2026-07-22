@@ -19,16 +19,4 @@ public class User implements Serializable{
 	public String getName() {return name;}
 	public String getPass(){return pass;}
 	
-	// Setter メソッド
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
 }

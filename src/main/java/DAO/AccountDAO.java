@@ -1,23 +1,55 @@
-package dao;
+package DAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import model.User;
 
 public class AccountDAO {
-	
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
-	private final String DB_USER = "root";
-	private final String DB_PASS = "password";
-	
-public User findByUser(User user) {
-	
-	//JDBCドライバを読み込む
-	try {
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		
-	} catch(ClassNotFoundException e) {
-		
-		throw new IllegalStateException("JDBCドライバを読み込めませんでした");
-	}
-	
-}}
+
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
+    private final String DB_USER = "root";
+    private final String DB_PASS = "password";
+
+    public User findByLogin(String id, String pass, String name) {
+
+        User user = null;
+
+        try {
+            // JDBCドライバの読み込み
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // データベースへ接続
+            Connection conn = DriverManager.getConnection(
+                    JDBC_URL, DB_USER, DB_PASS);
+
+            // SQL
+            String sql = "SELECT * FROM users WHERE id = ? AND pass = ? AND name = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, pass);
+            pstmt.setString(3, name);
+            ResultSet rs = pstmt.executeQuery();
+
+            // ログイン成功
+            if (rs.next()) {
+                rs.getString("id");
+                rs.getString("name");
+                rs.getString("psss");
+            }
+
+            // 後片付け
+            rs.close();
+            pstmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+}

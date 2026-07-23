@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import DAO.AccountDAO;
+
 /**
  * Servlet implementation class UserRegistServlet
  */
@@ -23,6 +25,16 @@ public class UserRegistServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String name = request.getParameter("name");
+		String pw = request.getParameter("password");
+		
+		AccountDAO dao = new AccountDAO();
+		boolean user = dao.insert(name, pw);
+		
+		if(user )
+		
 		
 	}
 

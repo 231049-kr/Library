@@ -19,11 +19,6 @@ pageEncoding="UTF-8"%>
 </p>
 
 <p>
-    メールアドレス：
-    <input type="text" name="email">
-</p>
-
-<p>
     パスワード：
     <input type="password" name="password">
 </p>

@@ -52,12 +52,12 @@
 
     <form action="BookSerchServlet" method="post">
 
-        図書：
+        図書：korega
         <input type="text" name="title">
         <br>
 
         図書ID：
-        <input type="text" name="author">
+        <input type="text" name="bookid">
         <br>
 
         <input type="submit" value="検索">

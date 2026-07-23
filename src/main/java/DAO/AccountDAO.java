@@ -12,7 +12,8 @@ public class AccountDAO {
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
     private final String DB_USER = "root";
     private final String DB_PASS = "password";
-
+    
+    //ログイン
     public User findByLogin(String id, String pass) {
 
         User user = null;
@@ -55,9 +56,9 @@ public class AccountDAO {
 
         return user;
     }
-    public User insert(String name, String pass) {
-    	
-    	User user = null;
+    
+    //ユーザー登録
+    public boolean insert(String name, String pass) {
     	
     	try {
     		 // JDBCドライバの読み込み
@@ -67,12 +68,21 @@ public class AccountDAO {
             Connection conn = DriverManager.getConnection(
                     JDBC_URL, DB_USER, DB_PASS);
 
-            conn.close();
+            String sql = "INSERT INTO users(name, password) VALUES(?, ?)";
+            
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, pass);
+            int rs = pstmt.executeUpdate();
+            
+            if (rs == 1) {
+            	return true;
+            }
     	} catch (Exception e) {
             e.printStackTrace();
             System.out.println("エラー");
            
         }
-    	return user;
+    	return false;
     }
 }

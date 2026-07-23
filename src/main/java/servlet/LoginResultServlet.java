@@ -28,7 +28,7 @@ public class LoginResultServlet extends HttpServlet {
 		AccountDAO dao = new AccountDAO();
 		User user = dao.findByLogin(id, pw);
 		
-		if (id == null || id.isEmpty() || pw == null || pw.isEmpty()) {
+		if (user != null) {
 			
 			if (id.length() == 8) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu");//後で書き換え
@@ -40,9 +40,11 @@ public class LoginResultServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen");
 				dispatcher.forward(request, response);
 			}
+		}else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult");
-		dispatcher.forward(request, response);
+		
 	}
 
 	

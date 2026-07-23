@@ -27,7 +27,7 @@ public class AccountDAO {
 
             // SQL
 
-            String sql = "SELECT * FROM users WHERE user_id = ? AND password = ? AND username = ?";
+            String sql = "SELECT * FROM users WHERE user_id = ? AND password = ? ";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -39,6 +39,7 @@ public class AccountDAO {
             if (rs.next()) {
                 rs.getString("id");
                 rs.getString("pass");
+               
             }
 
             // 後片付け
@@ -48,6 +49,7 @@ public class AccountDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+           
         }
 
         return user;

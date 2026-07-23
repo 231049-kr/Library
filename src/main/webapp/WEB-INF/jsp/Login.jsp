@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
 
 <h1>ログイン</h1>
 
-<form action="Login" method="post">
+<form action="LoginResultServlet" method="post">
 
     ID：
     <input type="text" name="id">

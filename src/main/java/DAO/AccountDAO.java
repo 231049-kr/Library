@@ -33,14 +33,15 @@ public class AccountDAO {
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
             System.out.println("SQL");
+            System.out.println(id+pass);
             ResultSet rs = pstmt.executeQuery();
-
+            
             // ログイン成功
             if (rs.next()) {
                 user = new User(
-                    rs.getString("id"),
-                    rs.getString("name"),
-                    rs.getString("pass")
+                    rs.getString("user_id"),
+                    rs.getString("username"),
+                    rs.getString("password")
                     
                 );
                 System.out.println("ログイン");

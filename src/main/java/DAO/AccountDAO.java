@@ -39,6 +39,7 @@ public class AccountDAO {
             if (rs.next()) {
                 rs.getString("id");
                 rs.getString("pass");
+               
             }
 
             // 後片付け
@@ -48,6 +49,7 @@ public class AccountDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+            throw new IllegalStateException("JDBCドライバを読み込めませんでした");
         }
 
         return user;

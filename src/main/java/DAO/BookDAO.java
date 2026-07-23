@@ -22,7 +22,6 @@ public class BookDAO {
 			Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 			
 			 String sql = "SELECT * FROM reading_memos WHERE memo_id = ? AND title = ? ";
-			 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bookId);

@@ -31,17 +31,17 @@ public class LoginResultServlet extends HttpServlet {
 		if (user != null) {
 			
 			if (id.length() == 8) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu.jsp");
 				dispatcher.forward(request, response);
 			}else if (id.length() == 6) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu.jsp");
 				dispatcher.forward(request, response);
 			}else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp");
 				dispatcher.forward(request, response);
 			}
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult.jsp");
 			dispatcher.forward(request, response);
 		}
 		

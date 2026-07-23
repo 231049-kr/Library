@@ -60,4 +60,24 @@ public class AccountDAO {
 
         return user;
     }
+    public User insert(String name, String pass) {
+    	
+    	User user = null;
+    	
+    	try {
+    		 // JDBCドライバの読み込み
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("JDBC");
+            // データベースへ接続
+            Connection conn = DriverManager.getConnection(
+                    JDBC_URL, DB_USER, DB_PASS);
+
+            conn.close();
+    	} catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("エラー");
+           
+        }
+    	return user;
+    }
 }

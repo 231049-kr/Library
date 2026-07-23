@@ -49,7 +49,7 @@ public class AccountDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+           
         }
 
         return user;

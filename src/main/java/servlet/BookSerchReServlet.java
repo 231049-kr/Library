@@ -29,8 +29,8 @@ public class BookSerchReServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String title = request.getParameter("title");
-		String author = request.getParameter("title");
-		String category = request.getParameter("title");
+		String author = request.getParameter("author");
+		String category = request.getParameter("category");
 		
 		BookDAO dao = new BookDAO();
         List<Book> books = dao.findByTitle(title);

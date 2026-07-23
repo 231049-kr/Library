@@ -22,14 +22,18 @@ public class LoginResultServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		//変数の取得
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 		
+		//インスタンス生成とDB照合
 		AccountDAO dao = new AccountDAO();
 		User user = dao.findByLogin(id, pw);
 		
+		//空白チェック
 		if (user != null) {
 			
+			//権限確認
 			if (id.length() == 8) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu.jsp");
 				dispatcher.forward(request, response);

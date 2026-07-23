@@ -37,9 +37,11 @@ public class AccountDAO {
 
             // ログイン成功
             if (rs.next()) {
-                rs.getString("id");
-                rs.getString("pass");
-               
+                user = new User(
+                    rs.getString("id"),
+                    rs.getString("name"),
+                    rs.getString("pass")
+                );
             }
 
             // 後片付け

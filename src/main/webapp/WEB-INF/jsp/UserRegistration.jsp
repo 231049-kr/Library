@@ -31,9 +31,5 @@ pageEncoding="UTF-8"%>
 <input type="submit" value="登録">
 </form>
 
-<br>
-
-<a href="UserMenuServlet">メニューに戻る</a>
-
 </body>
 </html>

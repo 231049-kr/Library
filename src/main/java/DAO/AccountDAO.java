@@ -13,7 +13,7 @@ public class AccountDAO {
     private final String DB_USER = "root";
     private final String DB_PASS = "password";
 
-    public User findByLogin(String id, String pass, String name) {
+    public User findByLogin(String id, String pass) {
 
         User user = null;
 
@@ -31,7 +31,7 @@ public class AccountDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
-            pstmt.setString(3, name);
+            
             ResultSet rs = pstmt.executeQuery();
 
             // ログイン成功

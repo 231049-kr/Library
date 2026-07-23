@@ -20,7 +20,6 @@ public class AccountDAO {
         try {
             // JDBCドライバの読み込み
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("JDBC");
             // データベースへ接続
             Connection conn = DriverManager.getConnection(
                     JDBC_URL, DB_USER, DB_PASS);
@@ -32,8 +31,6 @@ public class AccountDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
-            System.out.println("SQL");
-            System.out.println(id+pass);
             ResultSet rs = pstmt.executeQuery();
             
             // ログイン成功
@@ -44,7 +41,6 @@ public class AccountDAO {
                     rs.getString("password")
                     
                 );
-                System.out.println("ログイン");
             }
 
             // 後片付け
@@ -54,7 +50,6 @@ public class AccountDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("エラー");
            
         }
 

@@ -27,6 +27,7 @@ public class BookDAO {
 			
 			pstmt.setString(1, bookId);
 			 pstmt.setString(2, title);
+			 
 			 ResultSet rs = pstmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();

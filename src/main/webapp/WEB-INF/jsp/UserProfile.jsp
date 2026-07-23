@@ -92,15 +92,6 @@ User user = (User)request.getAttribute("user");
     <td><%= user.getEmail() %></td>
 </tr>
 
-<tr>
-    <th>電話番号</th>
-    <td><%= user.getPhone() %></td>
-</tr>
-
-<tr>
-    <th>住所</th>
-    <td><%= user.getAddress() %></td>
-</tr>
 
 </table>
 

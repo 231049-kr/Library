@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン画面</title>
+<title>貸出処理</title>
 
 <style>
 
@@ -16,8 +15,8 @@ pageEncoding="UTF-8"%>
         text-align: center;
     }
 
-    .login-box {
-        width: 350px;
+    .loan-box {
+        width: 400px;
         margin: 100px auto;
         padding: 30px;
         background-color: white;
@@ -29,16 +28,15 @@ pageEncoding="UTF-8"%>
         margin-bottom: 30px;
     }
 
-    input[type="text"],
-    input[type="password"] {
-        width: 200px;
+    input[type="text"] {
+        width: 220px;
         padding: 8px;
-        margin: 8px;
+        margin: 10px 0;
     }
 
     input[type="submit"] {
         padding: 10px 30px;
-        margin-top: 15px;
+        margin-top: 20px;
         cursor: pointer;
     }
 
@@ -48,24 +46,25 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<div class="login-box">
+<div class="loan-box">
 
-<h1>ログイン</h1>
+    <h1>貸出処理</h1>
 
-<form action="Login" method="post">
+    <form action="LoanServlet" method="post">
 
-    ID：
-    <input type="text" name="id">
-    <br>
+        利用者ID：
+        <br>
+        <input type="text" name="userId">
+        <br><br>
 
-    PW：
-    <input type="password" name="password">
-    <br>
+        書籍ID：
+        <br>
+        <input type="text" name="bookId">
+        <br><br>
 
-    <input type="submit" value="ログイン">
+        <input type="submit" value="貸出">
 
-
-</form>
+    </form>
 
 </div>
 

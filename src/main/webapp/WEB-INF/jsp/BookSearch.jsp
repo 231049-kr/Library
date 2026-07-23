@@ -50,7 +50,7 @@
 
     <h1>図書検索</h1>
 
-    <form action="BookSearchResult" method="post">
+    <form action="BookSerchServlet" method="post">
 
         書名：
         <input type="text" name="title">

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン画面</title>
+<title>返却処理</title>
 
 <style>
 
@@ -16,8 +15,8 @@ pageEncoding="UTF-8"%>
         text-align: center;
     }
 
-    .login-box {
-        width: 350px;
+    .return-box {
+        width: 400px;
         margin: 100px auto;
         padding: 30px;
         background-color: white;
@@ -29,16 +28,15 @@ pageEncoding="UTF-8"%>
         margin-bottom: 30px;
     }
 
-    input[type="text"],
-    input[type="password"] {
-        width: 200px;
+    input[type="text"] {
+        width: 220px;
         padding: 8px;
-        margin: 8px;
+        margin: 10px 0;
     }
 
     input[type="submit"] {
         padding: 10px 30px;
-        margin-top: 15px;
+        margin-top: 20px;
         cursor: pointer;
     }
 
@@ -48,24 +46,20 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<div class="login-box">
+<div class="return-box">
 
-<h1>ログイン</h1>
+    <h1>返却処理</h1>
 
-<form action="Login" method="post">
+    <form action="ReturnServlet" method="post">
 
-    ID：
-    <input type="text" name="id">
-    <br>
+        書籍ID：
+        <br>
+        <input type="text" name="bookId">
+        <br><br>
 
-    PW：
-    <input type="password" name="password">
-    <br>
+        <input type="submit" value="返却">
 
-    <input type="submit" value="ログイン">
-
-
-</form>
+    </form>
 
 </div>
 

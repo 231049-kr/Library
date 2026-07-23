@@ -52,16 +52,12 @@
 
     <form action="BookSerchServlet" method="post">
 
-        書名：
+        図書：
         <input type="text" name="title">
         <br>
 
-        著者：
+        図書ID：
         <input type="text" name="author">
-        <br>
-
-        分類：
-        <input type="text" name="category">
         <br>
 
         <input type="submit" value="検索">

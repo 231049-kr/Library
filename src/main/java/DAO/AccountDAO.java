@@ -26,7 +26,7 @@ public class AccountDAO {
                     JDBC_URL, DB_USER, DB_PASS);
 
             // SQL
-            String sql = "SELECT * FROM users WHERE id = ? AND pass = ? AND name = ?";
+            String sql = "SELECT * FROM users WHERE id = ? AND pass = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -37,8 +37,7 @@ public class AccountDAO {
             // ログイン成功
             if (rs.next()) {
                 rs.getString("id");
-                rs.getString("name");
-                rs.getString("psss");
+                rs.getString("pass");
             }
 
             // 後片付け

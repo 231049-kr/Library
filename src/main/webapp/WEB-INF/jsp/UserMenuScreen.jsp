@@ -53,7 +53,7 @@
 
     <h1>メニュー</h1>
 
-    <a href="BookSearch" class="menu-link">
+    <a href="BookSearchServlet" class="menu-link">
         図書検索
     </a>
 

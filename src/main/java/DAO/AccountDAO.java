@@ -26,7 +26,8 @@ public class AccountDAO {
                     JDBC_URL, DB_USER, DB_PASS);
 
             // SQL
-            String sql = "SELECT * FROM users WHERE id = ? AND pass = ?";
+
+            String sql = "SELECT * FROM users WHERE user_id = ? AND password = ? AND username = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);

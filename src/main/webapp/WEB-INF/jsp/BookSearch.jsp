@@ -50,7 +50,7 @@
 
     <h1>図書検索</h1>
 
-    <form action="BookSerchServlet" method="post">
+    <form action="BookSerchReServlet" method="post">
 
         図書：korega
         <input type="text" name="title">

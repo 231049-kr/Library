@@ -57,7 +57,7 @@
         <br>
 
         図書ID：
-        <input type="text" name="bookid">
+        <input type="text" name="bookId">
         <br>
 
         <input type="submit" value="検索">

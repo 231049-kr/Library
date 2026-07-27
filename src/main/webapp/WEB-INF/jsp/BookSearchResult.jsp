@@ -88,14 +88,14 @@ if (book != null) {
 %>
 
 <tr>
-    <td><%= book.getBookId() %></td>
-    <td><%= book.getTitle() %></td>
+    <td><%= book.getbookId() %></td>
+    <td><%= book.gettitle() %></td>
 
     <td>
         <form action="ReserveServlet" method="post">
             <input type="hidden"
                    name="book_id"
-                   value="<%= book.getBookId() %>">
+                   value="<%= book.getbookId() %>">
 
             <input type="submit"
                    value="予約する">

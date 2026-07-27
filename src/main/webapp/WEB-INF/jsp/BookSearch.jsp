@@ -52,7 +52,7 @@
 
     <form action="BookSerchReServlet" method="post">
 
-        図書：korega
+        図書：
         <input type="text" name="title">
         <br>
 

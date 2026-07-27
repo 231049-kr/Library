@@ -41,7 +41,7 @@ public class BookSerchReServlet extends HttpServlet {
 
         // 結果画面へ遷移
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/jsp/BookList.jsp");
+                request.getRequestDispatcher("/WEB-INF/jsp/BookSearchResult.jsp");
         dispatcher.forward(request, response);
 	}
 }

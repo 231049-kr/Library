@@ -30,7 +30,7 @@ public class BookSerchReServlet extends HttpServlet {
 
         // JSPから検索条件を取得
         String title = request.getParameter("title");
-        String bookId = request.getParameter("bookid");
+        String bookId = request.getParameter("bookId");
 
         // DAOを呼び出す
         BookDAO dao = new BookDAO();

@@ -10,7 +10,7 @@
 <h1>ログインに失敗しました</h1>
 
 
-<form action="Test" method="psot"><input type="submit" value="テスト"></form>
+<form action="Test" method="post"><input type="submit" value="ログイン画面に戻る"></form>
 
 </body>
 </html>

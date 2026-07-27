@@ -50,14 +50,14 @@
 
     <h1>図書検索</h1>
 
-    <form action="BookSerchServlet" method="post">
+    <form action="BookSerchReServlet" method="post">
 
         図書：
         <input type="text" name="title">
         <br>
 
         図書ID：
-        <input type="text" name="bookid">
+        <input type="text" name="bookId">
         <br>
 
         <input type="submit" value="検索">

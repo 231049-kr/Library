@@ -9,39 +9,45 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import DAO.AccountDAO;
+import model.User;
+
 /**
  * Servlet implementation class LoginResultServlet
  */
 @WebServlet("/LoginResultServlet")
 public class LoginResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		//変数の取得
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 		
-		if (id == null || id.isEmpty() || pw == null || pw.isEmpty()) {
+		//インスタンス生成とDB照合
+		AccountDAO dao = new AccountDAO();
+		User user = dao.findByLogin(id, pw);
+		
+		//空白チェック
+		if (user != null) {
+			
+			//権限確認
 			if (id.length() == 8) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu.jsp");
 				dispatcher.forward(request, response);
 			}else if (id.length() == 6) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu");//後で書き換え
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu.jsp");
 				dispatcher.forward(request, response);
 			}else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp");
 				dispatcher.forward(request, response);
 			}
+		}else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult.jsp");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoginResult");
-		dispatcher.forward(request, response);
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

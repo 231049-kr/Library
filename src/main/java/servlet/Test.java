@@ -9,14 +9,25 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BookSerchServlet
+ * Servlet implementation class Test
  */
-@WebServlet("/BookSerchServlet")
-public class BookSerchServlet extends HttpServlet {
+@WebServlet("/Test")
+public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Test() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/jsp/BookSerchServlet.jsp")
+		request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp")
 	       .forward(request, response);
 	}
 

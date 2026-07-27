@@ -72,8 +72,7 @@
 <h1>図書検索結果</h1>
 
 <%
-List<Book> books =
-    (List<Book>) request.getAttribute("books");
+Book book = (Book) request.getAttribute("book");
 %>
 
 <table>
@@ -81,53 +80,35 @@ List<Book> books =
 <tr>
     <th>ID</th>
     <th>タイトル</th>
-    <th>著者</th>
-    <th>出版社</th>
-    <th>在庫</th>
-    <th>操作</th>
+    <th>予約</th>
 </tr>
 
 <%
-for (Book book : books) {
+if (book != null) {
 %>
 
 <tr>
-
     <td><%= book.getBookId() %></td>
     <td><%= book.getTitle() %></td>
-    <td><%= book.getAuthor() %></td>
-    <td><%= book.getPublisher() %></td>
-    <td><%= book.getQuantity() %></td>
 
     <td>
-
-<%
-    if (book.getQuantity() > 0) {
-%>
-
-        <form action=" method="post">
-
+        <form action="ReserveServlet" method="post">
             <input type="hidden"
                    name="book_id"
                    value="<%= book.getBookId() %>">
 
             <input type="submit"
                    value="予約する">
-
         </form>
-
-<%
-    } else {
-%>
-
-        在庫なし
-
-<%
-    }
-%>
-
     </td>
+</tr>
 
+<%
+} else {
+%>
+
+<tr>
+    <td colspan="3">該当する図書はありません。</td>
 </tr>
 
 <%
@@ -135,7 +116,6 @@ for (Book book : books) {
 %>
 
 </table>
-
 <a href="UserMenuServlet">
     メニューに戻る
 </a>

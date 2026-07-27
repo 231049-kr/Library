@@ -12,32 +12,36 @@ public class AccountDAO {
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
     private final String DB_USER = "root";
     private final String DB_PASS = "password";
-
-    public User findByLogin(String id, String pass, String name) {
+    
+    //ログイン
+    public User findByLogin(String id, String pass) {
 
         User user = null;
 
         try {
             // JDBCドライバの読み込み
             Class.forName("com.mysql.cj.jdbc.Driver");
-
             // データベースへ接続
             Connection conn = DriverManager.getConnection(
                     JDBC_URL, DB_USER, DB_PASS);
 
             // SQL
-            String sql = "SELECT * FROM users WHERE id = ? AND pass = ?";
+
+            String sql = "SELECT * FROM users WHERE user_id = ? AND password = ? ";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
-            pstmt.setString(3, name);
             ResultSet rs = pstmt.executeQuery();
-
+            
             // ログイン成功
             if (rs.next()) {
-                rs.getString("id");
-                rs.getString("pass");
+                user = new User(
+                    rs.getString("user_id"),
+                    rs.getString("username"),
+                    rs.getString("password")
+                    
+                );
             }
 
             // 後片付け
@@ -47,8 +51,38 @@ public class AccountDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+           
         }
 
         return user;
+    }
+    
+    //ユーザー登録
+    public boolean insert(String name, String pass) {
+    	
+    	try {
+    		 // JDBCドライバの読み込み
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("JDBC");
+            // データベースへ接続
+            Connection conn = DriverManager.getConnection(
+                    JDBC_URL, DB_USER, DB_PASS);
+
+            String sql = "INSERT INTO users(name, password) VALUES(?, ?)";
+            
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, pass);
+            int rs = pstmt.executeUpdate();
+            
+            if (rs == 1) {
+            	return true;
+            }
+    	} catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("エラー");
+           
+        }
+    	return false;
     }
 }

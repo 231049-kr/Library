@@ -12,15 +12,10 @@ pageEncoding="UTF-8"%>
 
 <h1>ユーザー登録</h1>
 
-<form action="UserMenuServlet" method="post">
+<form action="UserRegistServlet" method="post">
 <p>
     氏名：
     <input type="text" name="name">
-</p>
-
-<p>
-    メールアドレス：
-    <input type="text" name="email">
 </p>
 
 <p>
@@ -30,10 +25,6 @@ pageEncoding="UTF-8"%>
 
 <input type="submit" value="登録">
 </form>
-
-<br>
-
-<a href="UserMenuServlet">メニューに戻る</a>
 
 </body>
 </html>

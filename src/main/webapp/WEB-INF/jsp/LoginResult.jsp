@@ -10,7 +10,7 @@
 <h1>ログインに失敗しました</h1>
 
 
-<form action="Test" method="psot">
+<form action="Test" method="post"><input type="submit" value="ログイン画面に戻る"></form>
 
 <select name="role">
     <option value="1">一般</option>

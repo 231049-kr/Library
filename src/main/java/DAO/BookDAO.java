@@ -30,9 +30,9 @@ public class BookDAO {
 			}
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-
+			String memo_id = bookId;
 			if (!bookId.isEmpty()) {
-			    pstmt.setString(1, bookId);
+			    pstmt.setString(1, memo_id);
 			} else {
 			    pstmt.setString(1, "%" + title + "%");
 			}
@@ -55,6 +55,7 @@ public class BookDAO {
 			e.printStackTrace();
 			
 		}
+		System.out.println(book);
 		return book;
 	}
 }

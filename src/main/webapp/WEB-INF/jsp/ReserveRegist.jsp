@@ -49,7 +49,7 @@
 
     <p>予約を登録しますか？</p>
 
-    <form action="ReserveCompleteServlet" method="post">
+    <form action="ReserveCompServlet" method="post">
 
 
 

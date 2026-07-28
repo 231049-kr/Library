@@ -38,10 +38,10 @@ public class Test extends HttpServlet {
                 break;
 
             case "2":
-                path = "/WEB-INF/jsp/AdminMenu";
+                path = "/WEB-INF/jsp/AdminMenu.jsp";
 
             default:
-                path = "/WEB-INF/jsp/Menu";
+                path = "/WEB-INF/jsp/Menu.jsp";
                 break;
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(path);

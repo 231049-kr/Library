@@ -29,15 +29,17 @@ public class UserRegistServlet extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String pw = request.getParameter("password");
+		int role = Integer.parseInt(request.getParameter("role"));
 		
 		AccountDAO dao = new AccountDAO();
-		boolean user = dao.insert(name, pw);
+		int user = dao.insert(name, pw, role);
 		
-		if(user == true) {
-			//ID生成、表示処理
+		if(user != -1) {
+			request.setAttribute("user", user);
+			
+			request.getRequestDispatcher("/WEB-INF/jsp/UserRegistResult.jsp")
+			.forward(request, response);
 		}
-		
-		
 	}
 
 }

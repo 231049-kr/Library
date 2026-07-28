@@ -58,7 +58,7 @@ public class AccountDAO {
     }
     
     //ユーザー登録
-    public boolean insert(String name, String pass) {
+    public int insert(String name, String pass, int role) {
     	
     	try {
     		 // JDBCドライバの読み込み
@@ -70,22 +70,23 @@ public class AccountDAO {
 
             String sql = "INSERT INTO users(username, password, role) VALUES(?, ?)";
             
-            int role = 3;
-            
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, name);
             pstmt.setString(2, pass);
             pstmt.setInt(3, role);
-            int rs = pstmt.executeUpdate();
+            int result = pstmt.executeUpdate();
             
-            if (rs == 1) {
-            	return true;
+            if (result == 1) {
+            	ResultSet rs = pstmt.getGeneratedKeys();
+            	
+            	if (rs.next()) {
+            		int userId = rs.getInt(1);
+            		return userId;
+            	}
             }
     	} catch (Exception e) {
             e.printStackTrace();
-            System.out.println("エラー");
-           
         }
-    	return false;
+    	return -1;
     }
 }

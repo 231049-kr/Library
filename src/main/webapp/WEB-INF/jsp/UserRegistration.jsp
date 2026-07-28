@@ -23,6 +23,13 @@ pageEncoding="UTF-8"%>
     <input type="password" name="password">
 </p>
 
+<p>
+	権限：
+	<select name="role">
+		<option value="1">管理者</option>
+		<option value="2">司書</option>
+		<option value="3">利用者</option>
+	</select>
 <input type="submit" value="登録">
 </form>
 

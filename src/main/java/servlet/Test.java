@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,8 +28,24 @@ public class Test extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp")
-	       .forward(request, response);
+		String role = request.getParameter("role");
+		
+		String path = "";
+		
+        switch (role) {
+            case "1":
+                path = "/WEB-INF/jsp/UserMenuScreen.jsp";
+                break;
+
+            case "2":
+                path = "/WEB-INF/jsp/AdminMenu";
+
+            default:
+                path = "/WEB-INF/jsp/Menu";
+                break;
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+        dispatcher.forward(request, response);
 	}
 
 	/**

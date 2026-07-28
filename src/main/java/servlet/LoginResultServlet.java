@@ -34,10 +34,10 @@ public class LoginResultServlet extends HttpServlet {
 		if (user != null) {
 			
 			//権限確認
-			if (id.length() == 8) {
+			if (user.getRole() == 1) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu.jsp");
 				dispatcher.forward(request, response);
-			}else if (id.length() == 6) {
+			}else if (user.getRole() == 2) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu.jsp");
 				dispatcher.forward(request, response);
 			}else {

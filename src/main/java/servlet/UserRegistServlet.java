@@ -33,7 +33,9 @@ public class UserRegistServlet extends HttpServlet {
 		AccountDAO dao = new AccountDAO();
 		boolean user = dao.insert(name, pw);
 		
-		if(user )
+		if(user == true) {
+			//ID生成、表示処理
+		}
 		
 		
 	}

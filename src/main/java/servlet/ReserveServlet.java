@@ -30,7 +30,7 @@ public class ReserveServlet extends HttpServlet {
 		request.setAttribute("title", title);
 
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/WEB-INF/jsp/ReserveConfirm.jsp");
+				request.getRequestDispatcher("/WEB-INF/jsp/ReserveRegist.jsp");
 		dispatcher.forward(request, response);
 	}
 }

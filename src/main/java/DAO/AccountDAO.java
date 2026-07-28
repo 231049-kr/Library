@@ -39,8 +39,8 @@ public class AccountDAO {
                 user = new User(
                     rs.getString("user_id"),
                     rs.getString("username"),
-                    rs.getString("password")
-                    
+                    rs.getString("password"),
+                    rs.getInt("role")
                 );
             }
 
@@ -68,11 +68,14 @@ public class AccountDAO {
             Connection conn = DriverManager.getConnection(
                     JDBC_URL, DB_USER, DB_PASS);
 
-            String sql = "INSERT INTO users(name, password) VALUES(?, ?)";
+            String sql = "INSERT INTO users(username, password, role) VALUES(?, ?)";
+            
+            int role = 3;
             
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, name);
             pstmt.setString(2, pass);
+            pstmt.setInt(3, role);
             int rs = pstmt.executeUpdate();
             
             if (rs == 1) {

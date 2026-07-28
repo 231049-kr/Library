@@ -12,6 +12,7 @@
 
 <form action="Test" method="post"><input type="submit" value="ログイン画面に戻る"></form>
 
+<form action="Test" method="post">
 <select name="role">
     <option value="1">一般</option>
     <option value="2">管理者</option>

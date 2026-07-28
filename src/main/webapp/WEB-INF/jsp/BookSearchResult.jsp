@@ -96,6 +96,11 @@ if (book != null) {
             <input type="hidden"
                    name="book_id"
                    value="<%= book.getBookId() %>">
+                   
+            <input type="hidden"
+            
+          			name="book_title"
+           			value="<%= book.getTitle() %>">
 
             <input type="submit"
                    value="予約する">

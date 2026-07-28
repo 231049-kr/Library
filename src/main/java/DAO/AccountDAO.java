@@ -58,7 +58,7 @@ public class AccountDAO {
     }
     
     //ユーザー登録
-    public boolean insert(String name, String pass) {
+    public boolean insert(String name, String pass, int role) {
     	
     	try {
     		 // JDBCドライバの読み込み
@@ -69,8 +69,6 @@ public class AccountDAO {
                     JDBC_URL, DB_USER, DB_PASS);
 
             String sql = "INSERT INTO users(username, password, role) VALUES(?, ?)";
-            
-            int role = 3;
             
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, name);

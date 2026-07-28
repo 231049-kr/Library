@@ -29,9 +29,9 @@ public class UserRegistServlet extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String pw = request.getParameter("password");
-		
+		int role = Integer.parseInt(request.getParameter("role"));
 		AccountDAO dao = new AccountDAO();
-		boolean user = dao.insert(name, pw);
+		boolean user = dao.insert(name, pw, role);
 		
 		if(user == true) {
 			//ID生成、表示処理

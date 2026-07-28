@@ -10,37 +10,38 @@
 <style>
 
 body{
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     background-color:#f2f2f2;
-    text-align:center;
+    margin:20px;
 }
 
 .menu-box{
     width:400px;
-    margin:80px auto;
-    padding:30px;
-    background:white;
+    margin:50px auto;
+    background:#f9f9f9;
     border:1px solid #ddd;
-    border-radius:10px;
+    padding:30px;
+    text-align:center;
 }
 
-h1{
+h2{
     margin-bottom:30px;
 }
 
-.menu-link{
+a{
     display:block;
-    width:250px;
     margin:15px auto;
     padding:12px;
-    background:#eeeeee;
+    width:220px;
     text-decoration:none;
     color:black;
+    background:#e6e6e6;
+    border:1px solid #ccc;
     border-radius:5px;
 }
 
-.menu-link:hover{
-    background:#dddddd;
+a:hover{
+    background:#d9d9d9;
 }
 
 </style>
@@ -50,17 +51,17 @@ h1{
 
 <div class="menu-box">
 
-<h1>司書メニュー</h1>
+<h2>司書メニュー</h2>
 
-<a href="" class="menu-link">蔵書管理</a>
+<a href="BookServlet">蔵書管理</a>
 
-<a href="" class="menu-link">貸出処理</a>
+<a href="LoanServlet">貸出処理</a>
 
-<a href="" class="menu-link">返却処理</a>
+<a href="ReturnServlet">返却処理</a>
 
-<a href="" class="menu-link">延滞一覧</a>
+<a href="DelayListServlet">延滞一覧</a>
 
-<a href="" class="menu-link">ログアウト</a>
+<a href="LoginServlet">ログアウト</a>
 
 </div>
 

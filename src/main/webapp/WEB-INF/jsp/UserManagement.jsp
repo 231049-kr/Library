@@ -88,7 +88,7 @@ input[type=submit]{
 
 <h2>新規利用者登録</h2>
 
-<form action="" method="post">
+<form action="UserManagementServlet" method="post">
 
 <input type="hidden" name="action" value="insert">
 
@@ -143,11 +143,9 @@ for(User user : users){
 
 <td><%= user.getName() %></td>
 
-<td><%= user.getEmail() %></td>
-
 <td>
 
-<form action="" method="post">
+<form action="UserManagementServlet" method="post">
 
 <input type="hidden" name="action" value="update">
 
@@ -171,7 +169,7 @@ value="<%= user.getEmail() %>">
 
 <td>
 
-<form action="" method="post">
+<form action="UserManagementServlet" method="post">
 
 <input type="hidden" name="action" value="delete">
 

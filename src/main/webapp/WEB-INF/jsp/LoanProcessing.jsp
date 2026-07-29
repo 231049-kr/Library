@@ -1,44 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="java.util.List" %>
+<%@ page import="model.Book" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>貸出処理</title>
+<title>貸出・返却処理</title>
 
 <style>
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-        text-align: center;
-    }
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    text-align:center;
+}
 
-    .loan-box {
-        width: 400px;
-        margin: 100px auto;
-        padding: 30px;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-    }
+.result-box{
+    width:800px;
+    margin:50px auto;
+    padding:30px;
+    background-color:white;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
 
-    h1 {
-        margin-bottom: 30px;
-    }
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
 
-    input[type="text"] {
-        width: 220px;
-        padding: 8px;
-        margin: 10px 0;
-    }
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+}
 
-    input[type="submit"] {
-        padding: 10px 30px;
-        margin-top: 20px;
-        cursor: pointer;
-    }
+th{
+    background-color:#eeeeee;
+}
+
+input[type="submit"]{
+    padding:6px 15px;
+    cursor:pointer;
+}
+
+a{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    background-color:#eeeeee;
+    color:black;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+a:hover{
+    background-color:#dddddd;
+}
 
 </style>
 
@@ -46,25 +67,87 @@
 
 <body>
 
-<div class="loan-box">
+<div class="result-box">
 
-    <h1>貸出処理</h1>
+<h1>貸出・返却処理</h1>
 
-    <form action="LoanServlet" method="post">
+<%
+List<Book> books = (List<Book>)request.getAttribute("books");
+%>
 
-        利用者ID：
-        <br>
-        <input type="text" name="userId">
-        <br><br>
+<table>
 
-        書籍ID：
-        <br>
-        <input type="text" name="bookId">
-        <br><br>
+<tr>
+    <th>書籍ID</th>
+    <th>タイトル</th>
+    <th>状態</th>
+    <th>貸出</th>
+    <th>返却</th>
+</tr>
 
-        <input type="submit" value="貸出">
+<%
+if(books != null && !books.isEmpty()){
 
-    </form>
+    for(Book book : books){
+%>
+
+<tr>
+
+    <td><%= book.getBookId() %></td>
+
+    <td><%= book.getTitle() %></td>
+
+    <td><%= book.getStatus() %></td>
+
+    <td>
+        <form action="" method="post">
+
+            <input type="hidden"
+                   name="bookId"
+                   value="<%= book.getBookId() %>">
+
+            <input type="submit"
+                   value="貸出">
+
+        </form>
+    </td>
+
+    <td>
+        <form action="" method="post">
+
+            <input type="hidden"
+                   name="bookId"
+                   value="<%= book.getBookId() %>">
+
+            <input type="submit"
+                   value="返却">
+
+        </form>
+    </td>
+
+</tr>
+
+<%
+    }
+
+}else{
+%>
+
+<tr>
+    <td colspan="5">
+        対象の図書はありません。
+    </td>
+</tr>
+
+<%
+}
+%>
+
+</table>
+
+<a href="">
+    メニューに戻る
+</a>
 
 </div>
 

@@ -155,7 +155,7 @@ value="<%= user.getName() %>">
 
 <input type="text"
 name="password"
-value="<%= user.getPass() %>
+value="<%= user.getPass() %>">
 
 <input type="submit" value="更新">
 

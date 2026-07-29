@@ -48,12 +48,13 @@
 
 
     <p>予約を登録しますか？</p>
-
+<p><strong>対象ID:</strong> ${memo.memoId}</p>
+<p><strong>タイトル:</strong> ${memo.title}</p>
    <form action="ReserveCompServlet" method="post">
 
 
-	<input type="hidden" name="id" value"${memo.memoId}">
-	<input type="hidden" name="title" value"${memo.title}">
+	<input type="hidden" name="id" value="${memo.memoId}">
+	<input type="hidden" name="title" value="${memo.title}">
 
 	<input type="submit" value="登録">
 

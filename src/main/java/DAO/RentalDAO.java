@@ -32,7 +32,7 @@ public class RentalDAO {
 			ps.setString(4, returnDate); // 返却日
 
 			ps.executeUpdate();
-			System.out.println("はいったよ");
+			System.out.println(id+name);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("無理だよ");

@@ -44,7 +44,7 @@ public class ReserveCompServlet extends HttpServlet {
 		// JSPから送られてきた id と title を取得
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
-
+		System.out.println("変数格納されてるか" +id + title);
 		// 参照先テーブル用のDAOを実行
 		RentalDAO rentalDao = new RentalDAO();
 		rentalDao.insertRental(id, title);

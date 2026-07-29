@@ -116,27 +116,7 @@ input[type=submit]{
 <td><input type="text" name="title"></td>
 </tr>
 
-<tr>
-<td>著者</td>
-<td><input type="text" name="author"></td>
-</tr>
-
-<tr>
-<td>出版社</td>
-<td><input type="text" name="publisher"></td>
-</tr>
-
-<tr>
-<td>状態</td>
-<td>
-<select name="status">
-<option value="貸出可能">貸出可能</option>
-<option value="貸出中">貸出中</option>
-<option value="整理中">整理中</option>
-<option value="廃棄">廃棄</option>
-</select>
-</td>
-</tr>
+<input type="hidden" name="status" value="AVL"</td>
 
 </table>
 

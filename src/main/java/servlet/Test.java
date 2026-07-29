@@ -39,7 +39,8 @@ public class Test extends HttpServlet {
 
             case "2":
                 path = "/WEB-INF/jsp/AdminMenu.jsp";
-
+                break;
+            	
             default:
                 path = "/WEB-INF/jsp/Menu.jsp";
                 break;

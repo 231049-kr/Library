@@ -92,14 +92,11 @@ input[type=submit]{
 
 <input type="hidden" name="action" value="insert">
 
-利用者ID
-<input type="text" name="userId">
-
 氏名
 <input type="text" name="name">
 
-メール
-<input type="text" name="email">
+パスワード
+<input type="password" name="password">
 
 <input type="submit" value="登録">
 
@@ -123,7 +120,6 @@ List<User> users=(List<User>)request.getAttribute("users");
 
 <th>利用者ID</th>
 <th>氏名</th>
-<th>メール</th>
 <th>更新</th>
 <th>削除</th>
 
@@ -139,7 +135,7 @@ for(User user : users){
 
 <tr>
 
-<td><%= user.getUserId() %></td>
+<td><%= user.getId() %></td>
 
 <td><%= user.getName() %></td>
 
@@ -151,15 +147,15 @@ for(User user : users){
 
 <input type="hidden"
 name="userId"
-value="<%= user.getUserId() %>">
+value="<%= user.getId() %>">
 
 <input type="text"
 name="name"
 value="<%= user.getName() %>">
 
 <input type="text"
-name="email"
-value="<%= user.getEmail() %>">
+name="password"
+value="<%= user.getPass() %>
 
 <input type="submit" value="更新">
 

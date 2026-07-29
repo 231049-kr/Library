@@ -174,7 +174,7 @@ name="role"
 
 <input type="hidden"
 name="userId"
-value="<%= user.getUserId() %>">
+value="<%= user.getId() %>">
 
 <input type="submit"
 value="削除"

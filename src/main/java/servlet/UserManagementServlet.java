@@ -48,8 +48,8 @@ public class UserManagementServlet extends HttpServlet {
 			String Ipw = request.getParameter("password");
 			int Irole = 3;
 			
-			AccountDAO dao = new AccountDAO();
-			int user = dao.insert(Iname, Ipw, Irole);
+			AccountDAO Idao = new AccountDAO();
+			int user = Idao.insert(Iname, Ipw, Irole);
 			
 			if(user != -1) {
 				request.setAttribute("user", user);
@@ -65,6 +65,9 @@ public class UserManagementServlet extends HttpServlet {
 			int Urole = Integer.parseInt(request.getParameter("role"));
 			
 			User Uuser = new User(Uid, Uname, Upw, Urole);
+			AccountDAO Udao = new AccountDAO();
+			boolean result = Udao.update(Uuser);
+			
 			break;
 		case "delete":
 			

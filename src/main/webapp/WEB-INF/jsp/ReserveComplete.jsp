@@ -56,7 +56,7 @@
     <h1>予約確認</h1>
 
     <p>予約が完了しました。</p>
-
+	
     <a href="UserMenuServlet">
         メニューへ戻る
     </a>

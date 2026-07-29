@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import model.Memo;
+
 /**
  * Servlet implementation class ReserveServlet
  */
@@ -29,6 +31,11 @@ public class ReserveServlet extends HttpServlet {
 		request.setAttribute("bookId", bookId);
 		request.setAttribute("title", title);
 
+		int id = Integer.parseInt(bookId);//しなくてもいいかも
+	    Memo memo = new Memo(id, title);
+
+	    // ★ "memo" という名前でセット（これでJSPの ${memo.memoId} とつながる）
+	    request.setAttribute("memo", memo);
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("/WEB-INF/jsp/ReserveRegist.jsp");
 		dispatcher.forward(request, response);

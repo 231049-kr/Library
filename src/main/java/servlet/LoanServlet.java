@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import DAO.LoanDAO;
+
 /**
  * Servlet implementation class LoanServlet
  */
@@ -26,9 +28,26 @@ public class LoanServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoanProcessing.jsp");
-        dispatcher.forward(request, response);
+		 request.setCharacterEncoding("UTF-8");
+
+	        int bookId = Integer.parseInt(request.getParameter("bookId"));
+
+	        LoanDAO dao = new LoanDAO();
+
+	        boolean result = dao.returnBook(bookId);
+
+	        if(result) {
+
+	            request.getRequestDispatcher("/WEB-INF/jsp/LoanProcessing.jsp")
+                .forward(request, response);
+
+	        }else {
+
+	            request.setAttribute("message", "返却に失敗しました");
+
+	            request.getRequestDispatcher("/WEB-INF/jsp/Error.jsp")
+	                   .forward(request, response);
+	        }
 	}
 
 }

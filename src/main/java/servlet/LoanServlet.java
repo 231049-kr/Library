@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +19,7 @@ public class LoanServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 
-    // 貸出・返却一覧表示
+    // 貸出・返却画面表示
     protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response)
@@ -30,20 +29,19 @@ public class LoanServlet extends HttpServlet {
         LoanDAO dao = new LoanDAO();
 
 
-        // 予約DBから一覧取得
-        List<Book> books = dao.findAll();
+        // 予約DBから取得
+        List<Book> books =
+                dao.selectReservedBooks();
 
 
+        // JSPへ渡す
         request.setAttribute("books", books);
 
 
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(
-                        "/WEB-INF/jsp/LoanProcessing.jsp");
-
-
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher(
+                "/WEB-INF/jsp/LoanProcessing.jsp")
+                .forward(request, response);
 
     }
 
@@ -59,14 +57,11 @@ public class LoanServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
 
-        // JSPのname="bookId"と合わせる
         String bookId =
                 request.getParameter("bookId");
 
 
-
         LoanDAO dao = new LoanDAO();
-
 
 
         boolean result =
@@ -74,15 +69,14 @@ public class LoanServlet extends HttpServlet {
 
 
 
-        if(result){
+        if(result) {
 
 
-            // 削除後、一覧再表示
-            response.sendRedirect(
-                    "LoanServlet");
+            // 削除後一覧を再表示
+            response.sendRedirect("LoanServlet");
 
 
-        }else{
+        } else {
 
 
             request.setAttribute(
@@ -92,7 +86,7 @@ public class LoanServlet extends HttpServlet {
 
             request.getRequestDispatcher(
                     "/WEB-INF/jsp/Error.jsp")
-                    .forward(request,response);
+                    .forward(request, response);
 
         }
 

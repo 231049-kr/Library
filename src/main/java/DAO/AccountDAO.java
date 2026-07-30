@@ -68,7 +68,7 @@ public class AccountDAO {
             Connection conn = DriverManager.getConnection(
                     JDBC_URL, DB_USER, DB_PASS);
 
-            String sql = "INSERT INTO users(username, password, role) VALUES(?, ?)";
+            String sql = "INSERT INTO users(username, password, role) VALUES(?, ?, ?)";
             
             PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, name);

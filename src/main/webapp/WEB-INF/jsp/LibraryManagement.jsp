@@ -99,7 +99,7 @@ input[type=submit]{
 
 <h2>図書登録</h2>
 
-<form action="BookServlet" method="post">
+<form action="LibraryManagementServlet" method="post">
 
 <input type="hidden" name="action" value="insert">
 
@@ -116,7 +116,7 @@ input[type=submit]{
 </tr>
 
 =======
-<input type="hidden" name="status" value="AVL"</td>
+<input type="hidden" name="status" value="AVL"></td>
 
 </table>
 

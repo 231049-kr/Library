@@ -53,7 +53,7 @@ a:hover{
 
 <h2>司書メニュー</h2>
 
-<a href="BookServlet">蔵書管理</a>
+<a href="LibraryManagementServlet">蔵書管理</a>
 
 <a href="LoanServlet">貸出処理</a>
 

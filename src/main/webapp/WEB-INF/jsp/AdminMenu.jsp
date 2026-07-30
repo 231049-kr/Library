@@ -52,7 +52,7 @@ h1{
 
 <h1>管理者メニュー</h1>
 
-<a href="" class="menu-link">利用者管理</a>
+<a href="UserManagementServlet" class="menu-link">利用者管理</a>
 
 <a href="" class="menu-link">蔵書管理</a>
 

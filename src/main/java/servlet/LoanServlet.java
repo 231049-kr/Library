@@ -10,33 +10,25 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserInfoServlet
+ * Servlet implementation class LoanServlet
  */
-@WebServlet("/UserInfoServlet")
-public class UserInfoServlet extends HttpServlet {
+@WebServlet("/LoanServlet")
+public class LoanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserInfoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoanProcessing.jsp");
+        dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu.jsp");
-		dispatcher.forward(request, response);
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LoanProcessing.jsp");
+        dispatcher.forward(request, response);
 	}
 
 }

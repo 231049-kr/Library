@@ -10,16 +10,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Test
+ * Servlet implementation class LibraryManagementServlet
  */
-@WebServlet("/Test")
-public class Test extends HttpServlet {
+@WebServlet("/LibraryManagementServlet")
+public class LibraryManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Test() {
+    public LibraryManagementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,33 +28,15 @@ public class Test extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String role = request.getParameter("role");
-		
-		String path = "";
-		
-        switch (role) {
-            case "1":
-                path = "/WEB-INF/jsp/UserMenuScreen.jsp";
-                break;
-
-            case "2":
-                path = "/WEB-INF/jsp/AdminMenu.jsp";
-                break;
-            	
-            default:
-                path = "/WEB-INF/jsp/Menu.jsp";
-                break;
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(path);
-        dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibraryManagement.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

@@ -115,6 +115,9 @@ input[type=submit]{
 <td><input type="text" name="title"></td>
 </tr>
 
+=======
+<input type="hidden" name="status" value="AVL"</td>
+
 </table>
 
 <br>

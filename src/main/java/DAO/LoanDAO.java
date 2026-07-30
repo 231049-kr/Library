@@ -3,106 +3,44 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
-import model.Book;
-
 
 public class LoanDAO {
 
+	private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
+	private final String DB_USER = "root";
+	private final String DB_PASS = "password";
 
-    private final String JDBC_URL =
-            "jdbc:mysql://localhost:3306/tutorial_memo_db";
+	public boolean returnBook(String BookId, String Title) {
 
-    private final String DB_USER = "root";
+		try {
 
-    private final String DB_PASS = "password";
+			// JDBCドライバ読み込み
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
+			// DB接続
+			Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 
+			// ===== このSQLはDB担当が修正 =====
+			String sql = "SELECT * FROM reading_memos WHERE memo_id,title";
 
-    // 予約中の本を取得
-    public List<Book> findAll() {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 
-        List<Book> books = new ArrayList<>();
+			pstmt.setString(1, BookId);
+			pstmt.setString(2, Title);
 
-        try {
-            // JDBCドライバ読み込み
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            // DB接続
-            Connection conn =
-                    DriverManager.getConnection(
-                            JDBC_URL,
-                            DB_USER,
-                            DB_PASS);
-            String sql = "SELECT book_id, title FROM reservation";
+			int result = pstmt.executeUpdate();
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.close();
+			conn.close();
 
+			return result > 0;
 
+		} catch (Exception e) {
 
-            ResultSet rs = pstmt.executeQuery();
+			e.printStackTrace();
 
-            while(rs.next()) {
+		}
 
-                Book book = new Book(
-                        rs.getString("title"),
-                        rs.getString("book_id")
-                );
-                books.add(book);
-            }
-
-            rs.close();
-            pstmt.close();
-            conn.close();
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        return books;
-
-    }
-    // 返却処理（予約DB削除）
-    public boolean returnBook(String bookId) {
-
-        boolean result = false;
-
-        try {
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            Connection conn =
-                    DriverManager.getConnection(
-                            JDBC_URL,
-                            DB_USER,
-                            DB_PASS);
-
-            String sql = "DELETE FROM reservation WHERE book_id = ?";
-
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            pstmt.setString(1, bookId);
-
-            int count =
-                    pstmt.executeUpdate();
-
-            if(count > 0) {
-                result = true;
-            }
-
-            pstmt.close();
-            conn.close();
-
-        } catch(Exception e) {
-
-            e.printStackTrace();
-
-        }
-
-        return result;
-
-    }
-
+		return false;
+	}
 }

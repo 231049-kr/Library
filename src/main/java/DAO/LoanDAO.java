@@ -21,12 +21,13 @@ public class LoanDAO {
 			Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 
 			// ===== このSQLはDB担当が修正 =====
-			String sql = "SELECT * FROM reading_memos WHERE memo_id = ??";
+			String sql = "SELECT * FROM reading_memos WHERE memo_id,title";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, BookId);
 			pstmt.setString(2, Title);
+
 			int result = pstmt.executeUpdate();
 
 			pstmt.close();

@@ -10,7 +10,7 @@ public class LoanDAO {
     private final String DB_USER = "root";
     private final String DB_PASS = "password";
 
-    public boolean returnBook(int bookId) {
+    public boolean returnBook(String BookId ,String Title) {
 
         try {
 
@@ -22,11 +22,12 @@ public class LoanDAO {
 
             // ===== このSQLはDB担当が修正 =====
             String sql =
-                "UPDATE books SET quantity = quantity + 1 WHERE book_id = ?";
+                "\"SELECT * FROM reading_memos WHERE memo_id = ??";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
-            pstmt.setInt(1, bookId);
+            pstmt.setString(1, BookId);
+            pstmt.setString(2, Title);
 
             int result = pstmt.executeUpdate();
 

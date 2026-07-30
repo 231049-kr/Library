@@ -30,11 +30,11 @@ public class LoanServlet extends HttpServlet {
 		
 		 request.setCharacterEncoding("UTF-8");
 
-	        int bookId = Integer.parseInt(request.getParameter("bookId"));
-
+	        String bookId = (request.getParameter("BookId"));
+	        String bookTitle = (request.getParameter("Title"));
 	        LoanDAO dao = new LoanDAO();
 
-	        boolean result = dao.returnBook(bookId);
+	        boolean result = dao.returnBook(bookId,bookTitle);
 
 	        if(result) {
 

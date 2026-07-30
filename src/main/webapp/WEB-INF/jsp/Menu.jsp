@@ -61,7 +61,7 @@ a:hover{
 
 <a href="DelayListServlet">延滞一覧</a>
 
-<a href="LoginServlet">ログアウト</a>
+<a href="Login">ログアウト</a>
 
 </div>
 

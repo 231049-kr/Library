@@ -6,42 +6,40 @@ import java.sql.PreparedStatement;
 
 public class LoanDAO {
 
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
-    private final String DB_USER = "root";
-    private final String DB_PASS = "password";
+	private final String JDBC_URL = "jdbc:mysql://localhost:3306/tutorial_memo_db";
+	private final String DB_USER = "root";
+	private final String DB_PASS = "password";
 
-    public boolean returnBook(String BookId ,String Title) {
+	public boolean returnBook(String BookId, String Title) {
 
-        try {
+		try {
 
-            // JDBCドライバ読み込み
-            Class.forName("com.mysql.cj.jdbc.Driver");
+			// JDBCドライバ読み込み
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // DB接続
-            Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
+			// DB接続
+			Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 
-            // ===== このSQLはDB担当が修正 =====
-            String sql =
-                "\"SELECT * FROM reading_memos WHERE memo_id = ??";
+			// ===== このSQLはDB担当が修正 =====
+			String sql = "SELECT * FROM reading_memos WHERE memo_id = ??";
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 
-            pstmt.setString(1, BookId);
-            pstmt.setString(2, Title);
+			pstmt.setString(1, BookId);
+			pstmt.setString(2, Title);
+			int result = pstmt.executeUpdate();
 
-            int result = pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
 
-            pstmt.close();
-            conn.close();
+			return result > 0;
 
-            return result > 0;
+		} catch (Exception e) {
 
-        } catch (Exception e) {
+			e.printStackTrace();
 
-            e.printStackTrace();
+		}
 
-        }
-
-        return false;
-    }
+		return false;
+	}
 }

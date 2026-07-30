@@ -116,7 +116,7 @@ input[type=submit]{
 </tr>
 
 =======
-<input type="hidden" name="status" value="AVL"</td>
+<input type="hidden" name="status" value="AVL"></td>
 
 </table>
 

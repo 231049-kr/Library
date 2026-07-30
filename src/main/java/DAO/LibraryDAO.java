@@ -19,10 +19,11 @@ public class LibraryDAO {
 	        Connection conn = DriverManager.getConnection(
 	        		JDBC_URL, DB_USER, DB_PASS);
 			 
-			 String sql = "INSERT INTO reading_memos(bookid, title, status) VALUES(?, ?, ?)";
+			 String sql = "INSERT INTO reading_memos(memo_id, title, status) VALUES(?, ?, ?)";
 			 
+			 String memo_id = bookId;
 			 PreparedStatement pstmt = conn.prepareStatement(sql);
-			 pstmt.setString(1, bookId);
+			 pstmt.setString(1, memo_id);
 			 pstmt.setString(2, title);
 			 pstmt.setString(3, status);
 			 

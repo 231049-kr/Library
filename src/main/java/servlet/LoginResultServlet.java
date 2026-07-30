@@ -38,7 +38,7 @@ public class LoginResultServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/AdminMenu.jsp");
 				dispatcher.forward(request, response);
 			}else if (user.getRole() == 2) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibrarianMenu.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
 				dispatcher.forward(request, response);
 			}else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserMenuScreen.jsp");

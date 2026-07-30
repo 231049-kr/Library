@@ -60,10 +60,6 @@ input[type=text]{
     width:180px;
 }
 
-select{
-    padding:6px;
-}
-
 input[type=submit]{
     padding:8px 20px;
     cursor:pointer;
@@ -78,6 +74,7 @@ input[type=submit]{
 <div class="container">
 
 <h1>蔵書管理</h1>
+
 
 <!-- 検索 -->
 <div class="box">
@@ -94,6 +91,8 @@ input[type=submit]{
 </form>
 
 </div>
+
+
 
 <!-- 登録 -->
 <div class="box">
@@ -116,6 +115,7 @@ input[type=submit]{
 <td><input type="text" name="title"></td>
 </tr>
 
+=======
 <input type="hidden" name="status" value="AVL"</td>
 
 </table>
@@ -128,6 +128,8 @@ input[type=submit]{
 
 </div>
 
+
+
 <!-- 一覧 -->
 
 <div class="box">
@@ -138,16 +140,14 @@ input[type=submit]{
 List<Book> books = (List<Book>)request.getAttribute("books");
 %>
 
+
 <table>
 
 <tr>
 <th>書籍ID</th>
 <th>タイトル</th>
-<th>著者</th>
-<th>出版社</th>
-<th>状態</th>
-<th>更新</th>
 </tr>
+
 
 <%
 if(books != null && !books.isEmpty()){
@@ -155,47 +155,20 @@ if(books != null && !books.isEmpty()){
 for(Book book : books){
 %>
 
+
 <tr>
 
-<td><%= book.getBookId() %></td>
-
-<td><%= book.getTitle() %></td>
-
-<td><%= book.getAuthor() %></td>
-
-<td><%= book.getPublisher() %></td>
-
-<td><%= book.getStatus() %></td>
-
 <td>
-
-<form action="BookServlet" method="post">
-
-<input type="hidden" name="action" value="update">
-
-<input type="hidden"
-name="bookId"
-value="<%= book.getBookId() %>">
-
-<select name="status">
-
-<option value="貸出可能">貸出可能</option>
-
-<option value="貸出中">貸出中</option>
-
-<option value="整理中">整理中</option>
-
-<option value="廃棄">廃棄</option>
-
-</select>
-
-<input type="submit" value="変更">
-
-</form>
-
+<%= book.getBookId() %>
 </td>
 
+<td>
+<%= book.getTitle() %>
+</td>
+
+
 </tr>
+
 
 <%
 }
@@ -203,23 +176,25 @@ value="<%= book.getBookId() %>">
 }else{
 %>
 
+
 <tr>
 
-<td colspan="6">
-
+<td colspan="2">
 蔵書は登録されていません。
-
 </td>
 
 </tr>
+
 
 <%
 }
 %>
 
+
 </table>
 
 </div>
+
 
 </div>
 

@@ -99,7 +99,7 @@ input[type=submit]{
 
 <h2>図書登録</h2>
 
-<form action="BookServlet" method="post">
+<form action="LibraryManagementServlet" method="post">
 
 <input type="hidden" name="action" value="insert">
 

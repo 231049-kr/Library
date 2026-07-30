@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import DAO.LibraryDAO;
+
 /**
  * Servlet implementation class LibraryManagementServlet
  */
@@ -36,7 +38,31 @@ public class LibraryManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
 		
+		switch(action) {
+		case "insert":
+			String Iid = request.getParameter("bookId");
+			String title = request.getParameter("title");
+			String status = request.getParameter("status");
+			
+			LibraryDAO dao = new LibraryDAO();
+			boolean result = dao.insert(Iid, title, status);
+			
+			if(result) {
+				request.setAttribute("message", "蔵書を登録しました。");
+			}else {
+				request.setAttribute("message", "蔵書の登録に失敗しました。");
+			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LibraryResult.jsp");
+			dispatcher.forward(request, response);
+			
+			
+		break;
+		
+		}
 	}
 
 }

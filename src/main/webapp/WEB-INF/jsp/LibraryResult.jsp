@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録完了</title>
+<title>登録結果</title>
 </head>
 <body>
-
+<p>${message}</p>
 </body>
 </html>

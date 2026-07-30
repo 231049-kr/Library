@@ -58,7 +58,8 @@ h1{
 
 <a href="" class="menu-link">延滞一覧</a>
 
-<a href="" class="menu-link">ログアウト</a>
+<a href="Login" class="menu-link">ログアウト</a>
+
 
 </div>
 

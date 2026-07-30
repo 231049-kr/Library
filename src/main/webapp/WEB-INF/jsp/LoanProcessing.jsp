@@ -130,7 +130,7 @@ if(books != null && !books.isEmpty()){
 
 </table>
 
-<a href="UserMenuSrvlet">
+<a href="UserMenuServlet">
     メニューに戻る
 </a>
 

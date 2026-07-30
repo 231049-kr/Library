@@ -80,8 +80,6 @@ List<Book> books = (List<Book>)request.getAttribute("books");
 <tr>
     <th>書籍ID</th>
     <th>タイトル</th>
-    <th>状態</th>
-    <th>貸出</th>
     <th>返却</th>
 </tr>
 
@@ -97,23 +95,10 @@ if(books != null && !books.isEmpty()){
 
     <td><%= book.getTitle() %></td>
 
-    <td><%= book.getStatus() %></td>
+    <%-- あとでこぴぺ　--%>
 
     <td>
-        <form action="" method="post">
-
-            <input type="hidden"
-                   name="bookId"
-                   value="<%= book.getBookId() %>">
-
-            <input type="submit"
-                   value="貸出">
-
-        </form>
-    </td>
-
-    <td>
-        <form action="" method="post">
+        <form action="LoanServlet" method="post">
 
             <input type="hidden"
                    name="bookId"
@@ -145,7 +130,7 @@ if(books != null && !books.isEmpty()){
 
 </table>
 
-<a href="">
+<a href="UserMenuSrvlet">
     メニューに戻る
 </a>
 

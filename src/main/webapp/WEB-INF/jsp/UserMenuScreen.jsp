@@ -65,7 +65,7 @@
         自身の情報照会
     </a>
 
-    <a href="LoanHistory" class="menu-link">
+    <a href="LoanServlet" class="menu-link">
         貸出状況確認
     </a>
 
